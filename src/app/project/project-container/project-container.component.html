@@ -1,0 +1,9 @@
+<app-project-list [projects]="projects" (selected)="selectProject($event)"></app-project-list>
+
+<hr>
+<app-project-detail [project]="selectedProject"></app-project-detail>
+
+<hr>
+<app-project-form (submitted)="submitProjectForm($event)"></app-project-form>
+
+

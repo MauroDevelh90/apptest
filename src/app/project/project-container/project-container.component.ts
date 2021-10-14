@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Project } from '@app/models/Project';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css']
+  selector: 'app-project-container',
+  templateUrl: './project-container.component.html',
+  styleUrls: ['./project-container.component.css']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectContainerComponent implements OnInit {
   selectedProject!: Project;
 
   projects: Project[] = [
@@ -58,13 +58,13 @@ export class ProjectComponent implements OnInit {
     this.selectedProject = project;
   }
 
-  submitProjectForm (f: NgForm) {
+  submitProjectForm (project: Project) {
     this.projects.push({
+      ...project,
       id: this.projects.length,
       code: Math.random().toString(36).replace('0.', '').substring(2, 9),
       done: false,
       tasks: [],
-      ...f.value
     });
   }
 
