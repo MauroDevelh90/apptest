@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Project } from '@app/models/Project';
 
 @Component({
@@ -7,6 +8,8 @@ import { Project } from '@app/models/Project';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
+  selectedProject!: Project;
+
   projects: Project[] = [
     {
       id: 1,
@@ -49,6 +52,20 @@ export class ProjectComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  selectProject(project: Project) {
+    this.selectedProject = project;
+  }
+
+  submitProjectForm (f: NgForm) {
+    this.projects.push({
+      id: this.projects.length,
+      code: Math.random().toString(36).replace('0.', '').substring(2, 9),
+      done: false,
+      tasks: [],
+      ...f.value
+    });
   }
 
 }
