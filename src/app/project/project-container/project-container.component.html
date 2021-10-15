@@ -1,18 +1,8 @@
 <app-section-header 
-[title]="'I miei Progetti'" 
-[buttonLabel]="'Torna alla Dashboard'"
-[buttonLink]="'/home'">
+[title]="'I miei Progetti'"
+[button]="{ label:'Vai alla Dashboard', link: '/home'}">
 </app-section-header>
 
-<!-- <div class="row mt-5">
-    <div class="col-8">
-        <h2>I miei Progetti</h2>
-    </div>
-    <div class="col text-end">
-        <button class="btn btn-link" routerLink="/home">Torna alla Dashboard</button>
-    </div>
-</div>
-<hr> -->
 
 <app-project-list [projects]="projects" (selected)="selectProject($event)"></app-project-list>
 
