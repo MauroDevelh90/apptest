@@ -3,8 +3,12 @@
 [button]="{ label:'Vai alla Dashboard', link: '/home'}">
 </app-section-header>
 
+<ng-container *ngIf="projects$ | async as projects">
+    <app-project-list [projects]="projects" (selected)="selectProject($event)"></app-project-list>
+</ng-container>
 
-<app-project-list [projects]="projects" (selected)="selectProject($event)"></app-project-list>
+
+
 
 <hr>
 <app-project-detail [project]="selectedProject"></app-project-detail>
